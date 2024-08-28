@@ -64,18 +64,28 @@ public class LoginEncryptionUtils {
         try {
             GeyserImpl geyser = session.getGeyser();
 
+            boolean xboxAuthEnabled = geyser.config().gameplay().xboxAuthEnabled();
+
             // Regardless of auth type, we don't support guest type accounts used for splitscreen
             if (authPayload.getAuthType() == AuthType.GUEST) {
-                session.disconnect(GeyserLocale.getLocaleStringLog("geyser.network.remote.invalid_xbox_account"));
-                return;
+                if (xboxAuthEnabled) {
+                    session.disconnect(GeyserLocale.getLocaleStringLog("geyser.network.remote.invalid_xbox_account"));
+                    return;
+                } else {
+                    geyser.getLogger().warning("Logging in without xbox");
+                }
             }
 
             ChainValidationResult result = EncryptionUtils.validatePayload(authPayload);
 
             geyser.getLogger().debug(String.format("Is player data signed? %s", result.signed()));
             if (!result.signed() && session.getGeyser().config().advanced().bedrock().validateBedrockLogin()) {
-                session.disconnect(GeyserLocale.getLocaleStringLog("geyser.network.remote.invalid_xbox_account"));
-                return;
+                if (xboxAuthEnabled) {
+                    session.disconnect(GeyserLocale.getLocaleStringLog("geyser.network.remote.invalid_xbox_account"));
+                    return;
+                } else {
+                    geyser.getLogger().warning("Logging in without xbox");
+                }
             }
 
             // Should always be present, but hey, why not make it safe :D

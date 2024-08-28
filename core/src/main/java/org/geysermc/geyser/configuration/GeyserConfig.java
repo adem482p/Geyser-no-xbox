@@ -342,6 +342,10 @@ public interface GeyserConfig {
             Otherwise, commands work as expected.""")
         boolean xboxAchievementsEnabled();
 
+        @Comment("Logs a warning instead of disconnecting players whose Xbox Live signature can't be verified.")
+        @DefaultBoolean(true)
+        boolean xboxAuthEnabled();
+
         @Comment("""
             The maximum number of custom skulls to be displayed per player. Increasing this may decrease performance on weaker devices.
             A value of 0 will disable all custom skulls.
