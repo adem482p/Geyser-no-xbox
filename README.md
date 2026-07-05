@@ -1,14 +1,23 @@
-> A fork of GeyserMC to allow Bedrock Edition players to join without Xbox Live authentication
->
-> Even when `auth-type` is set to `offline`, geyser checks whether the bedrock client is logged into an xbox account. the official Geyser project has stated it will not support disabling Xbox authentication ([#1198](https://github.com/GeyserMC/Geyser/issues/1198), [#5558](https://github.com/GeyserMC/Geyser/issues/5558)): "Xbox authentication disabling isn't something we're planning to add nor support — we do not condone piracy."
->
-> This fork exists for legitimate use cases where players cannot reach Xbox Live services at all (e.g., network restrictions in some regions).
->
-> This fork adds a `xbox-auth-enabled` config option (default `true`). When set to `false`, Geyser logs a warning instead of disconnecting players whose Xbox Live signature can't be verified.
->
-> Similar older forks:
-> - [HoseanRC/Geyser-Offline](https://github.com/HoseanRC/Geyser-Offline)
-> - [DOh1221/Geyser-OfflineMode](https://github.com/DOh1221/Geyser-OfflineMode)
+A fork of GeyserMC to allow Bedrock Edition players to join without Xbox Live authentication
+
+Even when `auth-type` is set to `offline`, geyser checks whether the bedrock client is logged into an xbox account. the official Geyser project has stated it will not support disabling Xbox authentication ([#1198](https://github.com/GeyserMC/Geyser/issues/1198), [#5558](https://github.com/GeyserMC/Geyser/issues/5558)): "Xbox authentication disabling isn't something we're planning to add nor support — we do not condone piracy."
+
+This fork exists for legitimate use cases where players cannot reach Xbox Live services at all (e.g., network restrictions in some regions).
+
+This fork adds a `xbox-auth-enabled` config option (default `true`). When set to `false`, Geyser logs a warning instead of disconnecting players whose Xbox Live signature can't be verified.
+
+Similar older forks:
+- [HoseanRC/Geyser-Offline](https://github.com/HoseanRC/Geyser-Offline)
+- [DOh1221/Geyser-OfflineMode](https://github.com/DOh1221/Geyser-OfflineMode)
+
+GeyserMC does not tag releases in their repository, but every official build embeds git metadata. 
+
+```bash
+# Extract git metadata from an official Geyser JAR:
+jar xf geyser.jar git.properties && cat git.properties
+```
+
+The rest of the docuemnt is the original readme
 
 <img src="https://geysermc.org/img/geyser-1760-860.png" alt="Geyser" width="600"/>
 
